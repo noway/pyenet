@@ -11,6 +11,6 @@ wget http://enet.bespin.org/download/enet-1.3.3.tar.gz
 
 
 tar -xzvf enet-1.3.3.tar.gz
-ln -s enet enet-1.3.3
+ln -s enet-1.3.3 enet
 
 git apply pyspades-enet.patch
