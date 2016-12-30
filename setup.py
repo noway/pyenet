@@ -5,7 +5,7 @@ from Cython.Distutils import build_ext
 import glob
 import sys
 
-source_files = ["enet.pyx"]
+source_files = ["enet-pyspades.pyx"]
 
 _enet_files = glob.glob("enet/*.c")
 
