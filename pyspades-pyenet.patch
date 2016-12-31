@@ -1,6 +1,6 @@
-diff --git a/enet-pyspades.pyx b/enet-pyspades.pyx
-index 0dda8ff..14c16a1 100644
---- a/enet-pyspades.pyx
+diff --git a/enet.pyx b/enet-pyspades.pyx
+index 0dda8ff..ce2983b 100644
+--- a/enet.pyx
 +++ b/enet-pyspades.pyx
 @@ -2,6 +2,8 @@ import atexit
  
@@ -110,18 +110,17 @@ index 0dda8ff..14c16a1 100644
  
      def __init__ (self, Address address=None, peerCount=0, channelLimit=0,
          incomingBandwidth=0, outgoingBandwidth=0):
-@@ -881,7 +909,9 @@ cdef class Host:
-         Waits for events on the host specified and shuttles packets between
+@@ -882,6 +910,9 @@ cdef class Host:
          the host and its peers. The timeout is in milliseconds.
          """
--
+ 
 +        global current_host
 +        current_host = self
 +        cdef int result
          if self._enet_host:
              event = Event()
              result = enet_host_service(
-@@ -889,6 +919,8 @@ cdef class Host:
+@@ -889,6 +920,8 @@ cdef class Host:
  
              if result < 0:
                  raise IOError("Servicing error - probably disconnected.")
@@ -130,7 +129,7 @@ index 0dda8ff..14c16a1 100644
              else:
                  return event
  
-@@ -1000,6 +1032,25 @@ cdef class Host:
+@@ -1000,6 +1033,25 @@ cdef class Host:
          def __set__(self, value):
              self._enet_host.totalReceivedPackets = value
  
